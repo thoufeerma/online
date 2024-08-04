@@ -5,10 +5,10 @@ FROM nginx:latest
 RUN rm /etc/nginx/conf.d/default.conf
 
 # Copy the custom Nginx configuration file into the container
-COPY nginx.conf /etc/nginx/conf.d
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy your static files into the container's web root directory
-COPY . /usr/share/nginx/html
+COPY site.html /usr/share/nginx/html/index.html
 
 # Expose port 80 to access the web server
 EXPOSE 80
