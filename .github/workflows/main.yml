@@ -21,11 +21,11 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t your-dockerhub-username/your-image-name:latest .
+        docker build -t thoufeerma/online-image:latest .
 
     - name: Push Docker image
       run: |
-        docker push your-dockerhub-username/your-image-name:latest
+        docker push thoufeerma/online-image:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -40,11 +40,11 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
           # Pull the latest Docker image
-          docker pull your-dockerhub-username/your-image-name:latest
+          docker pull thoufeerma/online-image:latest
           
           # Stop and remove the old container if it exists
-          docker stop your-container-name || true
-          docker rm your-container-name || true
+          docker stop online-container || true
+          docker rm online-container || true
           
           # Run the new Docker container
-          docker run -d --name your-container-name -p 80:80 your-dockerhub-username/your-image-name:latest
+          docker run -d --name online-container -p 80:80 thoufeerma/online-image:latest
