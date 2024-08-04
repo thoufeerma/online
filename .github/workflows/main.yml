@@ -47,4 +47,4 @@ jobs:
           docker rm online-container || true
           
           # Run the new Docker container
-          docker run -d --name online-container -p 80:80 thoufeerma/online-image:latest
+          docker run -d --name online-container -p 22:22 thoufeerma/online-image:latest
